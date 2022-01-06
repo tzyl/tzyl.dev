@@ -1,0 +1,37 @@
+---
+title: "Advent of Code 2021 Reflections"
+excerpt: "Reflections on 50 stars of Advent Of Code 2021"
+date: "2022-01-06T12:00:00.000Z"
+coverImage: "/assets/blog/aoc-2021-reflections/tzyl_aoc2021.png"
+ogImage: "/assets/blog/aoc-2021-reflections/tzyl_aoc2021.png"
+---
+
+## Intro
+
+I thoroughly enjoyed working through the [Advent of Code] 2021 problems this
+year and feel accomplishment after attaining all 50 stars. My language of choice
+this time was Python 3.10 which was refreshing to play with some of the modern
+features given I work mostly in TypeScript these days.
+
+## Tools
+
+The supporting toolchain for Python I used to write code quickly was:
+
+- black
+- isort
+- flake8
+- mypy
+
+The addition of [PEP 484] and application in `mypy` felt similar to TypeScript
+with flexible typing on top of a dynamically typed language allowing for fast
+iteration. The combination of `black`/`isort`/`flake8` for formatting and
+linting also worked great as the analog of `prettier`/`eslint` for JS.
+
+## Solutions
+
+Check out my repo [tzyl/aoc21] for full solutions and accompanying notes
+explaining the high level techniques employed.
+
+[advent of code]: https://adventofcode.com
+[pep 484]: https://www.python.org/dev/peps/pep-0484
+[tzyl/aoc21]: https://github.com/tzyl/aoc21

@@ -3,17 +3,16 @@ import Meta from "./meta";
 import Navbar from "./navbar";
 
 type Props = {
-  preview?: boolean;
   children: React.ReactNode;
 };
 
-const Layout = ({ preview, children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Meta />
-      <div className="min-h-screen">
+      <div className="flex flex-col min-h-screen max-w-screen-lg mx-auto px-5 text-gray-800">
         <Navbar />
-        <main>{children}</main>
+        <main className="flex-grow">{children}</main>
         <Footer />
       </div>
     </>

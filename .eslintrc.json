@@ -1,6 +1,7 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "eslint-config-prettier"
-  ]
+  "extends": ["next/core-web-vitals", "eslint-config-prettier"],
+  "rules": {
+    // "next/image" does not work with "next export"
+    "@next/next/no-img-element": "off"
+  }
 }
