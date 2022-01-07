@@ -2,7 +2,10 @@
 title: "Advent of Code 2021 Reflections"
 excerpt: "Reflections on 50 stars of Advent Of Code 2021"
 date: "2022-01-06T12:00:00.000Z"
-coverImage: "/assets/blog/aoc-2021-reflections/tzyl_aoc2021.png"
+coverImage:
+  src: "/assets/blog/aoc-2021-reflections/tzyl_aoc2021.png"
+  width: 256
+  height: 64
 ogImage: "/assets/blog/aoc-2021-reflections/tzyl_aoc2021.png"
 ---
 

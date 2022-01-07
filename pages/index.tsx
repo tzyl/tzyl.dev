@@ -17,6 +17,8 @@ const Index = () => {
             className="rounded-full mb-8"
             src="/assets/profile.jpg"
             alt="Picture of tzyl"
+            width={128}
+            height={128}
           />
         </div>
         <section>
