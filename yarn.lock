@@ -2769,6 +2769,11 @@ next-mdx-remote@^3.0.8:
     esbuild "^0.12.9"
     pkg-dir "^5.0.0"
 
+next-seo@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.0.0.tgz#8a5c82279edcbd74c4ce58efa5588528e47c0d72"
+  integrity sha512-uCa8hoE5VQz4D2NqZAPhqR64hY5LSmaq70wmfGK09U57TMY7XzsDI+MjfZo0MgHJM87bj3Fd/oMQbDcZ/YWhJQ==
+
 next@12.0.7:
   version "12.0.7"
   resolved "https://registry.yarnpkg.com/next/-/next-12.0.7.tgz#33ebf229b81b06e583ab5ae7613cffe1ca2103fc"

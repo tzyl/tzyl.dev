@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../components/image";
-import { KnownImagePath, KNOWN_IMAGE_METADATA } from "../lib/images";
+import { getImageMetadata, KnownImagePath } from "../lib/images";
 
 type Props = {
   className?: string;
@@ -10,11 +10,7 @@ type Props = {
 
 const KnownImage = ({ className, alt, imagePath }: Props) => {
   return (
-    <Image
-      className={className}
-      alt={alt}
-      {...KNOWN_IMAGE_METADATA[imagePath]}
-    />
+    <Image className={className} alt={alt} {...getImageMetadata(imagePath)} />
   );
 };
 

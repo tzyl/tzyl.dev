@@ -1,17 +1,18 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Container from "../components/container";
 import KnownImage from "../components/known-image";
 import Layout from "../components/layout";
 import PageHeader from "../components/page-header";
 import SectionHeader from "../components/section-header";
-import { KnownImagePath } from "../lib/images";
+import { getOgImageUrl, KnownImagePath } from "../lib/images";
 
 const Index = () => {
   return (
     <Layout>
-      <Head>
-        <title>Home - tzyl</title>
-      </Head>
+      <NextSeo
+        title="Home - tzyl"
+        openGraph={{ images: [{ url: getOgImageUrl(KnownImagePath.PROFILE) }] }}
+      />
       <Container>
         <PageHeader>tzyl</PageHeader>
         <div className="flex justify-center md:justify-start">

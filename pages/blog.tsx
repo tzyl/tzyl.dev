@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Container from "../components/container";
 import Layout from "../components/layout";
 import PageHeader from "../components/page-header";
@@ -13,9 +13,10 @@ type Props = {
 const Blog = ({ posts }: Props) => {
   return (
     <Layout>
-      <Head>
-        <title>Blog - tzyl</title>
-      </Head>
+      <NextSeo
+        title="Blog - tzyl"
+        description="My latest thoughts on topics such as programming and mathematics."
+      />
       <Container>
         <PageHeader>Blog</PageHeader>
         <section className="mb-16">

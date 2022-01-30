@@ -86,3 +86,17 @@ export const isKnownImagePath = (
     src != null && Object.values(KnownImagePath).includes(src as KnownImagePath)
   );
 };
+
+export const getImageMetadata = (
+  imagePath: KnownImagePath
+): { oneX: StaticImageData; twoX: StaticImageData } => {
+  return KNOWN_IMAGE_METADATA[imagePath];
+};
+
+export const getOgImageUrl = (imagePath: KnownImagePath): string => {
+  return getRawOgImageUrl(getImageMetadata(imagePath).twoX.src);
+};
+
+export const getRawOgImageUrl = (src: string): string => {
+  return process.env.NEXT_PUBLIC_BASE_URL + src;
+};

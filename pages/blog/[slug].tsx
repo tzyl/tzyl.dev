@@ -1,4 +1,5 @@
 import { serialize } from "next-mdx-remote/serialize";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
@@ -9,7 +10,7 @@ import PostBody from "../../components/post-body";
 import PostFooter from "../../components/post-footer";
 import PostHeader from "../../components/post-header";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
-import { KNOWN_IMAGE_METADATA } from "../../lib/images";
+import { getOgImageUrl } from "../../lib/images";
 import Post from "../../types/post";
 
 type Props = {
@@ -19,13 +20,12 @@ type Props = {
 const BlogPost = ({ post }: Props) => {
   return (
     <Layout>
+      <NextSeo
+        title={`${post.title} - tzyl`}
+        description={post.excerpt}
+        openGraph={{ images: [{ url: getOgImageUrl(post.ogImage) }] }}
+      />
       <Head>
-        <title>{post.title} - tzyl</title>
-        <meta
-          key="og:image"
-          property="og:image"
-          content={KNOWN_IMAGE_METADATA[post.ogImage].twoX.src}
-        />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
@@ -60,6 +60,7 @@ export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
     "slug",
     "title",
+    "excerpt",
     "date",
     "coverImage",
     "ogImage",
