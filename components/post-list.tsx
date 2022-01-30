@@ -12,7 +12,7 @@ const PostList = ({ posts }: Props) => {
         <PostPreview
           key={post.slug}
           title={post.title}
-          coverImage={post.coverImage}
+          coverImagePath={post.coverImage}
           date={post.date}
           slug={post.slug}
           excerpt={post.excerpt}

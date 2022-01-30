@@ -1,4 +1,4 @@
-import ImageMetadata from "../types/image-metadata";
+import { KnownImagePath } from "../lib/images";
 import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
 import PageHeader from "./page-header";
@@ -6,10 +6,10 @@ import PageHeader from "./page-header";
 type Props = {
   title: string;
   date: string;
-  coverImage: ImageMetadata;
+  coverImagePath: KnownImagePath;
 };
 
-const PostHeader = ({ title, coverImage, date }: Props) => {
+const PostHeader = ({ title, coverImagePath, date }: Props) => {
   return (
     <>
       <PageHeader>{title}</PageHeader>
@@ -17,7 +17,7 @@ const PostHeader = ({ title, coverImage, date }: Props) => {
         <DateFormatter dateString={date} />
       </div>
       <div className="mb-8 md:mb-16">
-        <CoverImage title={title} imageMetadata={coverImage} />
+        <CoverImage title={title} imagePath={coverImagePath} />
       </div>
     </>
   );

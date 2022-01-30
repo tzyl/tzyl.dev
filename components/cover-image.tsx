@@ -1,27 +1,22 @@
 import classNames from "classnames";
 import Link from "next/link";
-import ImageMetadata from "../types/image-metadata";
+import { KnownImagePath } from "../lib/images";
+import KnownImage from "./known-image";
 
 type Props = {
   title: string;
-  imageMetadata: ImageMetadata;
+  imagePath: KnownImagePath;
   slug?: string;
 };
 
-const CoverImage = ({
-  title,
-  imageMetadata: { src, width, height },
-  slug,
-}: Props) => {
+const CoverImage = ({ title, imagePath, slug }: Props) => {
   const image = (
-    <img
-      src={src}
-      width={width}
-      height={height}
-      alt={`Cover Image for ${title}`}
+    <KnownImage
       className={classNames("shadow-sm", {
         "hover:shadow-lg transition-shadow duration-200": slug,
       })}
+      alt={`Cover Image for ${title}`}
+      imagePath={imagePath}
     />
   );
   return slug ? (

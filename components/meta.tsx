@@ -25,6 +25,7 @@ const Meta = () => {
       <meta property="og:title" content="tzyl.dev" />
       <meta property="og:description" content="Profile and blog for tzyl" />
       <meta
+        key="og:image"
         property="og:image"
         content="/assets/favicon/android-chrome-512x512.png"
       />

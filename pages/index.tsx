@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Container from "../components/container";
+import KnownImage from "../components/known-image";
 import Layout from "../components/layout";
 import PageHeader from "../components/page-header";
 import SectionHeader from "../components/section-header";
+import { KnownImagePath } from "../lib/images";
 
 const Index = () => {
   return (
@@ -13,12 +15,10 @@ const Index = () => {
       <Container>
         <PageHeader>tzyl</PageHeader>
         <div className="flex justify-center md:justify-start">
-          <img
+          <KnownImage
             className="rounded-full mb-8"
-            src="/assets/profile.jpg"
             alt="Picture of tzyl"
-            width={128}
-            height={128}
+            imagePath={KnownImagePath.PROFILE}
           />
         </div>
         <section>

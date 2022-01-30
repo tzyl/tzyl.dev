@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
+import { getKnownImagePath } from "./images";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -9,8 +10,8 @@ export function getPostSlugs() {
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const realSlug = slug.replace(/\.mdx$/, "");
+  const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -27,6 +28,9 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     }
     if (field === "content") {
       items[field] = content;
+    }
+    if (field === "coverImage" || field === "ogImage") {
+      items[field] = getKnownImagePath(data[field]);
     }
 
     if (typeof data[field] !== "undefined") {

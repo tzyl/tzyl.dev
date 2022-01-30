@@ -1,11 +1,15 @@
+import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
 import PostBody from "../../components/post-body";
 import PostFooter from "../../components/post-footer";
 import PostHeader from "../../components/post-header";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
-import markdownToHtml from "../../lib/markdownToHtml";
+import { KNOWN_IMAGE_METADATA } from "../../lib/images";
 import Post from "../../types/post";
 
 type Props = {
@@ -17,7 +21,11 @@ const BlogPost = ({ post }: Props) => {
     <Layout>
       <Head>
         <title>{post.title} - tzyl</title>
-        <meta property="og:image" content={post.ogImage} />
+        <meta
+          key="og:image"
+          property="og:image"
+          content={KNOWN_IMAGE_METADATA[post.ogImage].twoX.src}
+        />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
@@ -29,10 +37,10 @@ const BlogPost = ({ post }: Props) => {
         <article>
           <PostHeader
             title={post.title}
-            coverImage={post.coverImage}
+            coverImagePath={post.coverImage}
             date={post.date}
           />
-          <PostBody content={post.content} />
+          <PostBody mdxSource={post.mdxSource} />
           <PostFooter />
         </article>
       </Container>
@@ -57,13 +65,19 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "content",
   ]);
-  const content = await markdownToHtml(post.content || "");
+
+  const mdxSource = await serialize(post.content, {
+    mdxOptions: {
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex, rehypeExternalLinks],
+    },
+  });
 
   return {
     props: {
       post: {
         ...post,
-        content,
+        mdxSource,
       },
     },
   };
