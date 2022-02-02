@@ -26,9 +26,13 @@
 }
 
 .markdown ul {
-  @apply list-disc list-inside;
+  @apply list-disc list-outside pl-6;
 }
 
 .markdown ol {
-  @apply list-decimal list-inside;
+  @apply list-decimal list-outside pl-6;
+}
+
+.markdown li {
+  @apply mb-2;
 }

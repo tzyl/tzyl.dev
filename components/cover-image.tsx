@@ -12,7 +12,7 @@ type Props = {
 const CoverImage = ({ title, imagePath, slug }: Props) => {
   const image = (
     <KnownImage
-      className={classNames("shadow-sm", {
+      className={classNames("shadow", {
         "hover:shadow-lg transition-shadow duration-200": slug,
       })}
       alt={`Cover Image for ${title}`}
