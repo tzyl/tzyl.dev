@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "../components/image";
-import { getImageMetadata, KnownImagePath } from "../lib/images";
+import { KnownImagePath } from "../generated/images";
+import { getImageMetadata } from "../lib/images";
 
 type Props = {
   className?: string;

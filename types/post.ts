@@ -1,5 +1,5 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { KnownImagePath } from "../lib/images";
+import { KnownImagePath } from "../generated/images";
 
 type Post = {
   slug: string;

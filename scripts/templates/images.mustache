@@ -1,0 +1,23 @@
+{{#images}}
+import {{variableName1x}} from "../{{{path1x}}}";
+import {{variableName2x}} from "../{{{path2x}}}";
+{{/images}}
+
+export const KnownImagePath = {
+{{#images}}
+  {{enumName}}: "{{{pathReference}}}",
+{{/images}}
+} as const;
+export type KnownImagePath = typeof KnownImagePath[keyof typeof KnownImagePath];
+
+export const KNOWN_IMAGE_METADATA: Record<
+  KnownImagePath,
+  { oneX: StaticImageData; twoX: StaticImageData }
+> = {
+{{#images}}
+  [KnownImagePath.{{enumName}}]: {
+    oneX: {{variableName1x}},
+    twoX: {{variableName2x}},
+  },
+{{/images}}
+};

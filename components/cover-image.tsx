@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { KnownImagePath } from "../lib/images";
+import { KnownImagePath } from "../generated/images";
 import KnownImage from "./known-image";
 
 type Props = {

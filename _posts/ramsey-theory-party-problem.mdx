@@ -2,8 +2,8 @@
 title: "Ramsey Theory - The Party Problem"
 excerpt: "From triangles to friends and strangers at a party"
 date: "2022-01-08T12:00:00.000Z"
-coverImage: "/assets/blog/ramsey-theory-party-problem/k6-graph.png"
-ogImage: "/assets/blog/ramsey-theory-party-problem/k6-graph.png"
+coverImage: "blog/ramsey-theory-party-problem/k6-graph.png"
+ogImage: "blog/ramsey-theory-party-problem/k6-graph.png"
 ---
 
 ## Intro
@@ -28,25 +28,25 @@ graph $G$ is defined as a subgraph of $G$ that is also complete i.e. has all
 possible edges between its nodes. We are therefore looking for a red or a blue
 clique of size three ($K_3$), or in other words a red or a blue triangle.
 
-![k3-graph-red](/assets/blog/ramsey-theory-party-problem/k3-graph-red.png) **Red
+![k3-graph-red](blog/ramsey-theory-party-problem/k3-graph-red.png) **Red
 triangle represents all three people know each other**
 
-![k3-graph-blue](/assets/blog/ramsey-theory-party-problem/k3-graph-blue.png)
-**Blue triangle represents all three people do not know each other**
+![k3-graph-blue](blog/ramsey-theory-party-problem/k3-graph-blue.png) **Blue
+triangle represents all three people do not know each other**
 
 First, we show a counterexample that the party must have more than five people.
 Here is a red/blue colouring of $K_5$ which does not contain a red or blue
 triangle:
 
-![k5-counterexample](/assets/blog/ramsey-theory-party-problem/k5-counterexample.png)
+![k5-counterexample](blog/ramsey-theory-party-problem/k5-counterexample.png)
 **$K_5$ counterexample**
 
 Now we must show that for any red/blue colouring of $K_6$ there must always be a
 red triangle or a blue triangle. Consider a node of $K_6$ and the colours of its
 five edges to the other five nodes in the graph:
 
-![k6-pigeonhole](/assets/blog/ramsey-theory-party-problem/k6-pigeonhole.png) **A
-node and its edge colours in $K_6$**
+![k6-pigeonhole](blog/ramsey-theory-party-problem/k6-pigeonhole.png) **A node
+and its edge colours in $K_6$**
 
 By the [pigeonhole principle] there must be at least three edges with the same
 colour. Without loss of generality let us assume we are looking at node 1 and
@@ -54,7 +54,7 @@ the edges to 2, 3 and 4 are red. If this is not the case we can relabel the
 nodes and reverse the role of red and blue to make this true. Now, consider the
 colours of the edges between nodes 2, 3 and 4:
 
-![k6-red-or-blue-triangle](/assets/blog/ramsey-theory-party-problem/k6-red-or-blue-triangle.png)
+![k6-red-or-blue-triangle](blog/ramsey-theory-party-problem/k6-red-or-blue-triangle.png)
 **Edges between 2, 3 and 4**
 
 We have two cases:

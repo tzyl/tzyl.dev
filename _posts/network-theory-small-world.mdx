@@ -2,8 +2,8 @@
 title: "Network Theory - Six Degrees of Separation"
 excerpt: "A mathematical representation for the small world phenomenon"
 date: "2022-02-06T12:00:00.000Z"
-coverImage: "/assets/blog/network-theory-small-world/six-degrees-of-separation.png"
-ogImage: "/assets/blog/network-theory-small-world/six-degrees-of-separation.png"
+coverImage: "blog/network-theory-small-world/six-degrees-of-separation.png"
+ogImage: "blog/network-theory-small-world/six-degrees-of-separation.png"
 ---
 
 ## Intro
@@ -39,7 +39,7 @@ $$
 In other words, for sufficiently large $n$, the degrees of separation grows at
 most logarithmically.
 
-![small-world-asymptotic](/assets/blog/network-theory-small-world/small-world-asymptotic.png)
+![small-world-asymptotic](blog/network-theory-small-world/small-world-asymptotic.png)
 **Asymptotic growth of $\ell$ relative to $n$ in a small world**
 
 ## Milgram experiment
@@ -79,7 +79,7 @@ $\langle k \rangle = (n-1)p$ as there are $n - 1$ possible edges to nodes
 excluding yourself each present with probability $p$. For large $n$ at a
 distance of $x$ we can then roughly reach $(n-1)^xp^x$ nodes.
 
-![erdos-renyi-friends](/assets/blog/network-theory-small-world/erdos-renyi-friends.png)
+![erdos-renyi-friends](blog/network-theory-small-world/erdos-renyi-friends.png)
 **Number of friends reachable in $G(n,p)$ at a distance of $x$**
 
 To reach all nodes at the shortest distance $\ell$ we then have:
@@ -122,19 +122,19 @@ We start with an initial ring lattice with $N$ nodes with each node having
 degree $K$ with edges to the nearest $\frac{K}{2}$ nodes to the left and the
 nearest $\frac{K}{2}$ nodes to the right. Here we demonstrate $N=12$ and $K=4$:
 
-![watts-strogatz-ring](/assets/blog/network-theory-small-world/watts-strogatz-ring.png)
+![watts-strogatz-ring](blog/network-theory-small-world/watts-strogatz-ring.png)
 **Initial ring lattice with $\frac{NK}{2}$ edges**
 
 For each node we consider the $\frac{K}{2}$ edges to the nodes to the left and
 with probability $\beta$ rewire the edge randomly to another node that does not
 already have an edge to the current node:
 
-![watts-strogatz-rewire](/assets/blog/network-theory-small-world/watts-strogatz-rewire.png)
+![watts-strogatz-rewire](blog/network-theory-small-world/watts-strogatz-rewire.png)
 **Rewiring of an edge with probability $\beta$ in the Watts-Strogatz model**
 
 Repeating this rewiring step over all nodes we complete the random graph:
 
-![watts-strogatz-finish](/assets/blog/network-theory-small-world/watts-strogatz-finish.png)
+![watts-strogatz-finish](blog/network-theory-small-world/watts-strogatz-finish.png)
 **Completed random graph generated from rewiring process**
 
 The rewired edges can be thought of as "shortcuts" or "wormholes" through the
@@ -165,7 +165,7 @@ connected and choose $m <= m_0$ such that at each step we add a new node to the
 network with $m$ edges to existing nodes in the network. Here we demonstrate the
 preferential attachment process with $m_0 = 5$ and $m = 1$.
 
-![barabasi-albert-initial](/assets/blog/network-theory-small-world/barabasi-albert-initial.png)
+![barabasi-albert-initial](blog/network-theory-small-world/barabasi-albert-initial.png)
 **Initial network with $m_0$ = 5**
 
 When adding a new node to the network we choose $m$ existing nodes to add edges
@@ -173,18 +173,18 @@ to. The probability $p_i$ that we attach to an existing node $i$ is weighted by
 its degree $k_i$ using the distribution $p_i = \frac{k_i}{\sum_j{k_j}}$. Hence,
 highly linked nodes are "preferred" and more likely to accumulate more edges.
 
-![barabasi-albert-one-step](/assets/blog/network-theory-small-world/barabasi-albert-one-step.png)
+![barabasi-albert-one-step](blog/network-theory-small-world/barabasi-albert-one-step.png)
 **Network after one step of growth with $m = 1$**
 
 Repeating this process for a second step we add a second new node and connect it
 to another existing node weighted by its degree:
 
-![barabasi-albert-two-steps](/assets/blog/network-theory-small-world/barabasi-albert-two-steps.png)
+![barabasi-albert-two-steps](blog/network-theory-small-world/barabasi-albert-two-steps.png)
 **Network after two steps of growth with $m = 1$**
 
 We repeat this process until we reach the desired network size:
 
-![barabasi-albert-final](/assets/blog/network-theory-small-world/barabasi-albert-final.png)
+![barabasi-albert-final](blog/network-theory-small-world/barabasi-albert-final.png)
 **Final network after repeating growth by preferential attachment**
 
 Notice that preferential attachment leads to hub and spoke network with a small
@@ -197,7 +197,7 @@ nodes struggle to gain new edges.
 The degree distribution in fact follows a power law distribution which is known
 as a **scale free network**.
 
-![barabasi-albert-power-law](/assets/blog/network-theory-small-world/barabasi-albert-power-law.png)
+![barabasi-albert-power-law](blog/network-theory-small-world/barabasi-albert-power-law.png)
 **Power law degree distribution**
 
 The hub and spoke structure leads to a low average shortest path length with

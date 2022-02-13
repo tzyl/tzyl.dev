@@ -4,14 +4,17 @@ import KnownImage from "../components/known-image";
 import Layout from "../components/layout";
 import PageHeader from "../components/page-header";
 import SectionHeader from "../components/section-header";
-import { getOgImageUrl, KnownImagePath } from "../lib/images";
+import { KnownImagePath } from "../generated/images";
+import { getOgImageUrl } from "../lib/images";
 
 const Index = () => {
   return (
     <Layout>
       <NextSeo
         title="Home - tzyl"
-        openGraph={{ images: [{ url: getOgImageUrl(KnownImagePath.PROFILE) }] }}
+        openGraph={{
+          images: [{ url: getOgImageUrl(KnownImagePath.PROFILE_PROFILE_JPG) }],
+        }}
       />
       <Container>
         <PageHeader>tzyl</PageHeader>
@@ -19,7 +22,7 @@ const Index = () => {
           <KnownImage
             className="rounded-full mb-8"
             alt="Picture of tzyl"
-            imagePath={KnownImagePath.PROFILE}
+            imagePath={KnownImagePath.PROFILE_PROFILE_JPG}
           />
         </div>
         <section>

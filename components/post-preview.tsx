@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { KnownImagePath } from "../lib/images";
+import { KnownImagePath } from "../generated/images";
 import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
 
