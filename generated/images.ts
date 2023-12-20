@@ -1,6 +1,16 @@
 import type { StaticImageData } from "next/image";
 import blogAoc2021ReflectionsTzylAoc2021Png_1x from "../public/assets/blog/aoc-2021-reflections/tzyl-aoc2021@1x.png";
 import blogAoc2021ReflectionsTzylAoc2021Png_2x from "../public/assets/blog/aoc-2021-reflections/tzyl-aoc2021@2x.png";
+import blogHowToLearnDevAlgorithmsPng_1x from "../public/assets/blog/how-to-learn-dev/algorithms@1x.png";
+import blogHowToLearnDevAlgorithmsPng_2x from "../public/assets/blog/how-to-learn-dev/algorithms@2x.png";
+import blogHowToLearnDevDeveloperToolsPng_1x from "../public/assets/blog/how-to-learn-dev/developer-tools@1x.png";
+import blogHowToLearnDevDeveloperToolsPng_2x from "../public/assets/blog/how-to-learn-dev/developer-tools@2x.png";
+import blogHowToLearnDevHowToLearnDevPng_1x from "../public/assets/blog/how-to-learn-dev/how-to-learn-dev@1x.png";
+import blogHowToLearnDevHowToLearnDevPng_2x from "../public/assets/blog/how-to-learn-dev/how-to-learn-dev@2x.png";
+import blogHowToLearnDevLanguageBasicsPng_1x from "../public/assets/blog/how-to-learn-dev/language-basics@1x.png";
+import blogHowToLearnDevLanguageBasicsPng_2x from "../public/assets/blog/how-to-learn-dev/language-basics@2x.png";
+import blogHowToLearnDevProjectsPng_1x from "../public/assets/blog/how-to-learn-dev/projects@1x.png";
+import blogHowToLearnDevProjectsPng_2x from "../public/assets/blog/how-to-learn-dev/projects@2x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_1x from "../public/assets/blog/network-theory-small-world/barabasi-albert-final@1x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_2x from "../public/assets/blog/network-theory-small-world/barabasi-albert-final@2x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertInitialPng_1x from "../public/assets/blog/network-theory-small-world/barabasi-albert-initial@1x.png";
@@ -41,6 +51,14 @@ import profileProfileJpg_2x from "../public/assets/profile/profile@2x.jpg";
 export const KnownImagePath = {
   BLOG_AOC_2021_REFLECTIONS_TZYL_AOC2021_PNG:
     "blog/aoc-2021-reflections/tzyl-aoc2021.png",
+  BLOG_HOW_TO_LEARN_DEV_ALGORITHMS_PNG: "blog/how-to-learn-dev/algorithms.png",
+  BLOG_HOW_TO_LEARN_DEV_DEVELOPER_TOOLS_PNG:
+    "blog/how-to-learn-dev/developer-tools.png",
+  BLOG_HOW_TO_LEARN_DEV_HOW_TO_LEARN_DEV_PNG:
+    "blog/how-to-learn-dev/how-to-learn-dev.png",
+  BLOG_HOW_TO_LEARN_DEV_LANGUAGE_BASICS_PNG:
+    "blog/how-to-learn-dev/language-basics.png",
+  BLOG_HOW_TO_LEARN_DEV_PROJECTS_PNG: "blog/how-to-learn-dev/projects.png",
   BLOG_NETWORK_THEORY_SMALL_WORLD_BARABASI_ALBERT_FINAL_PNG:
     "blog/network-theory-small-world/barabasi-albert-final.png",
   BLOG_NETWORK_THEORY_SMALL_WORLD_BARABASI_ALBERT_INITIAL_PNG:
@@ -87,6 +105,26 @@ export const KNOWN_IMAGE_METADATA: Record<
   [KnownImagePath.BLOG_AOC_2021_REFLECTIONS_TZYL_AOC2021_PNG]: {
     oneX: blogAoc2021ReflectionsTzylAoc2021Png_1x,
     twoX: blogAoc2021ReflectionsTzylAoc2021Png_2x,
+  },
+  [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_ALGORITHMS_PNG]: {
+    oneX: blogHowToLearnDevAlgorithmsPng_1x,
+    twoX: blogHowToLearnDevAlgorithmsPng_2x,
+  },
+  [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_DEVELOPER_TOOLS_PNG]: {
+    oneX: blogHowToLearnDevDeveloperToolsPng_1x,
+    twoX: blogHowToLearnDevDeveloperToolsPng_2x,
+  },
+  [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_HOW_TO_LEARN_DEV_PNG]: {
+    oneX: blogHowToLearnDevHowToLearnDevPng_1x,
+    twoX: blogHowToLearnDevHowToLearnDevPng_2x,
+  },
+  [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_LANGUAGE_BASICS_PNG]: {
+    oneX: blogHowToLearnDevLanguageBasicsPng_1x,
+    twoX: blogHowToLearnDevLanguageBasicsPng_2x,
+  },
+  [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_PROJECTS_PNG]: {
+    oneX: blogHowToLearnDevProjectsPng_1x,
+    twoX: blogHowToLearnDevProjectsPng_2x,
   },
   [KnownImagePath.BLOG_NETWORK_THEORY_SMALL_WORLD_BARABASI_ALBERT_FINAL_PNG]: {
     oneX: blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_1x,
