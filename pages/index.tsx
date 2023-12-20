@@ -20,7 +20,7 @@ const Index = () => {
         <PageHeader>tzyl</PageHeader>
         <div className="flex justify-center md:justify-start">
           <KnownImage
-            className="rounded-full mb-8"
+            className="mb-8 rounded-full"
             alt="Picture of tzyl"
             imagePath={KnownImagePath.PROFILE_PROFILE_JPG}
           />

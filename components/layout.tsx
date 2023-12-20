@@ -10,7 +10,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Meta />
-      <div className="flex flex-col min-h-screen max-w-screen-lg mx-auto px-5 text-gray-800">
+      <div className="mx-auto flex min-h-screen max-w-screen-lg flex-col px-5 text-gray-800">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

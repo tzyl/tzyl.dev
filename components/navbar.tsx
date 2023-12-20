@@ -8,10 +8,10 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <nav className="flex items-center flex-wrap pt-8 pb-8">
+    <nav className="flex flex-wrap items-center pt-8 pb-8">
       <div className="flex items-center">
         <Link href="/">
-          <a className="font-bold mr-2">tzyl</a>
+          <a className="mr-2 font-bold">tzyl</a>
         </Link>
         <NavbarIconLink
           iconComponent={FiGithub}
@@ -29,7 +29,7 @@ const Navbar = () => {
           title="Email"
         />
       </div>
-      <div className="flex flex-row ml-auto items-center">
+      <div className="ml-auto flex flex-row items-center">
         <NavbarTabLink text="Home" href="/" active={router.pathname === "/"} />
         <NavbarTabLink
           text="Blog"

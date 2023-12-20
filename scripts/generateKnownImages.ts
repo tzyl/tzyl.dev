@@ -22,7 +22,7 @@ function generateKnownImages(inputPath: string, outputPath: string): void {
   const imagePaths = crawlImagePaths(inputPath);
   const mustacheImageMetadata = createMustacheImageMetadata(
     inputPath,
-    imagePaths
+    imagePaths,
   );
   const template = fs.readFileSync(TEMPLATE_PATH, "utf8");
   const output = Mustache.render(template, {
@@ -33,7 +33,7 @@ function generateKnownImages(inputPath: string, outputPath: string): void {
 
 function crawlImagePaths(
   dir: string,
-  whitelistedExtensions = WHITELISTED_EXTENSIONS
+  whitelistedExtensions = WHITELISTED_EXTENSIONS,
 ): string[] {
   const imagePaths: string[] = [];
   const files = fs.readdirSync(dir);
@@ -52,7 +52,7 @@ function crawlImagePaths(
 
 function createMustacheImageMetadata(
   inputPath: string,
-  imagePaths: string[]
+  imagePaths: string[],
 ): MustacheImageMetadata[] {
   const paths1X: Map<string, string> = new Map();
   const paths2X: Map<string, string> = new Map();
@@ -67,7 +67,7 @@ function createMustacheImageMetadata(
   }
 
   const allPaths: string[] = Array.from(
-    new Set([...Array.from(paths1X.keys()), ...Array.from(paths2X.keys())])
+    new Set([...Array.from(paths1X.keys()), ...Array.from(paths2X.keys())]),
   );
 
   return allPaths.map((imagePath) => {
@@ -82,7 +82,7 @@ function createMustacheImageMetadata(
       inputPath,
       imagePath,
       path1X,
-      path2X
+      path2X,
     );
   });
 }
@@ -91,7 +91,7 @@ function createSingleMustacheImageMetadata(
   inputPath: string,
   imagePath: string,
   path1x: string,
-  path2x: string
+  path2x: string,
 ): MustacheImageMetadata {
   const pathReference = path.relative(inputPath, imagePath);
   const words = pathReference.split(/[-_./\s]+/);
@@ -99,7 +99,7 @@ function createSingleMustacheImageMetadata(
     .map((word, i) =>
       i > 0
         ? word[0].toUpperCase() + word.substring(1).toLowerCase()
-        : word.toLowerCase()
+        : word.toLowerCase(),
     )
     .join("");
   const variableName1x = variableName + "_1x";
@@ -117,7 +117,7 @@ function createSingleMustacheImageMetadata(
 
 function removeFileNameSuffix(
   parsedPath: path.ParsedPath,
-  suffix: string
+  suffix: string,
 ): string {
   const { dir, name, ext } = parsedPath;
   return path.join(dir, name.substring(0, name.length - suffix.length) + ext);

@@ -5,7 +5,7 @@ type Props = {
 };
 
 const SectionHeader = ({ children }: Props) => {
-  return <h2 className="font-semibold text-xl mb-5">{children}</h2>;
+  return <h2 className="mb-5 text-xl font-semibold">{children}</h2>;
 };
 
 export default SectionHeader;

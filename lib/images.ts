@@ -9,7 +9,7 @@ export const getKnownImagePath = (src: string | undefined): KnownImagePath => {
 };
 
 export const isKnownImagePath = (
-  src: string | undefined
+  src: string | undefined,
 ): src is KnownImagePath => {
   return (
     src != null && Object.values(KnownImagePath).includes(src as KnownImagePath)
@@ -17,7 +17,7 @@ export const isKnownImagePath = (
 };
 
 export const getImageMetadata = (
-  imagePath: KnownImagePath
+  imagePath: KnownImagePath,
 ): { oneX: StaticImageData; twoX: StaticImageData } => {
   return KNOWN_IMAGE_METADATA[imagePath];
 };

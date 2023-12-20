@@ -12,8 +12,8 @@ const NavbarTabLink = ({ text, href, active }: Props) => {
     <Link href={href}>
       <a
         className={classNames(
-          "inline-flex px-3 py-2 font-bold hover:text-green-300 transition-all duration-100",
-          active && "underline underline-offset-8 decoration-4"
+          "inline-flex px-3 py-2 font-bold transition-all duration-100 hover:text-green-300",
+          active && "underline decoration-4 underline-offset-8",
         )}
       >
         {text}
