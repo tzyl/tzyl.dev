@@ -18,8 +18,12 @@ const PostPreview = ({ title, coverImagePath, date, excerpt, slug }: Props) => {
         <CoverImage slug={slug} title={title} imagePath={coverImagePath} />
       </div>
       <h3 className="mb-3 text-3xl leading-snug">
-        <Link as={`/blog/${slug}`} href="/blog/[slug]">
-          <a className="hover:underline">{title}</a>
+        <Link
+          as={`/blog/${slug}`}
+          href="/blog/[slug]"
+          className="hover:underline"
+        >
+          {title}
         </Link>
       </h3>
       <div className="mb-4 text-lg">

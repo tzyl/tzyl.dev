@@ -9,15 +9,14 @@ type Props = {
 
 const NavbarTabLink = ({ text, href, active }: Props) => {
   return (
-    <Link href={href}>
-      <a
-        className={classNames(
-          "inline-flex px-3 py-2 font-bold transition-all duration-100 hover:text-green-300",
-          active && "underline decoration-4 underline-offset-8",
-        )}
-      >
-        {text}
-      </a>
+    <Link
+      href={href}
+      className={classNames(
+        "inline-flex px-3 py-2 font-bold transition-all duration-100 hover:text-green-300",
+        active && "underline decoration-4 underline-offset-8",
+      )}
+    >
+      {text}
     </Link>
   );
 };

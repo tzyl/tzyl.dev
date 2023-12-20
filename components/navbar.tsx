@@ -10,8 +10,8 @@ const Navbar = () => {
   return (
     <nav className="flex flex-wrap items-center pt-8 pb-8">
       <div className="flex items-center">
-        <Link href="/">
-          <a className="mr-2 font-bold">tzyl</a>
+        <Link href="/" className="mr-2 font-bold">
+          tzyl
         </Link>
         <NavbarIconLink
           iconComponent={FiGithub}
