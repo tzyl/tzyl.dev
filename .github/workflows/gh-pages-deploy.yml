@@ -7,30 +7,37 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
       - name: Get files
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: yarn
+          node-version: 20
+          cache: pnpm
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Install packages
-        run: yarn install
+        run: pnpm install
+
+      - name: Lint project
+        run: pnpm lint
+
       - name: Build project
-        run: yarn build
+        run: pnpm build
+
       - name: Export static files
-        run: yarn export
+        run: pnpm export
+
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
+
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@4.5.0
         with:
           branch: gh-pages
           folder: out
-

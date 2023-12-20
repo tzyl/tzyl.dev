@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 type Props = {
   className?: string;
   alt: string;

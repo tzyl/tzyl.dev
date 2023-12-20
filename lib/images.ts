@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import { KnownImagePath, KNOWN_IMAGE_METADATA } from "../generated/images";
 
 export const getKnownImagePath = (src: string | undefined): KnownImagePath => {

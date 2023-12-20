@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import blogAoc2021ReflectionsTzylAoc2021Png_1x from "../public/assets/blog/aoc-2021-reflections/tzyl-aoc2021@1x.png";
 import blogAoc2021ReflectionsTzylAoc2021Png_2x from "../public/assets/blog/aoc-2021-reflections/tzyl-aoc2021@2x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_1x from "../public/assets/blog/network-theory-small-world/barabasi-albert-final@1x.png";
@@ -76,7 +77,8 @@ export const KnownImagePath = {
     "blog/ramsey-theory-party-problem/k6-red-or-blue-triangle.png",
   PROFILE_PROFILE_JPG: "profile/profile.jpg",
 } as const;
-export type KnownImagePath = typeof KnownImagePath[keyof typeof KnownImagePath];
+export type KnownImagePath =
+  (typeof KnownImagePath)[keyof typeof KnownImagePath];
 
 export const KNOWN_IMAGE_METADATA: Record<
   KnownImagePath,
