@@ -11,7 +11,8 @@ jobs:
       - name: Get files
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
 
