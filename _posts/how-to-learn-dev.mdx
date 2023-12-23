@@ -1,0 +1,394 @@
+---
+title: "How to learn software development"
+excerpt: "Practical advice for beginners"
+date: "2023-12-23T12:00:00.000Z"
+coverImage: "blog/how-to-learn-dev/how-to-learn-dev.png"
+ogImage: "blog/how-to-learn-dev/how-to-learn-dev.png"
+---
+
+## Intro
+
+The world of software development can seem like a never ending mountain of
+skills to learn. As soon as you feel like you're reaching a peak another starts
+forming on the horizon. In many ways this is part of the appeal for a logical
+thinker who enjoys the journey of learning, however it can understandably be
+overwhelming for a newcomer trying to get started.
+
+This post contains practical advice targeted at beginners who are interested in
+getting started in the world of software development especially for those coming
+from outside of computer science as I did from mathematics. It's true that job
+interviews suck and imposter syndrome is real but perseverance in the industry
+is rewarded with a unique feeling of satisfaction.
+
+## Learn a language
+
+![language-basics](blog/how-to-learn-dev/language-basics.png)
+
+First step is to learn the basics of a programming language.
+
+This could be any of the popular general purpose programming languages such as
+Python, Java, C#, JavaScript (TypeScript), Go. Incremental features have been
+added to the older languages that have survived the test of time and have become
+more modern and pleasant.
+
+Over the course of many years it's likely that you'll end up picking up extra
+languages for various reasons: forced to for new job, trying a new personal
+project, writing automation scripts. The recurring theme is to focus on the
+fundamentals which in this case means support for functions,
+classes/interfaces/objects, if/else statements, for/while loops, static types,
+generics. Language specific expertise can come over time such as how garbage
+collection or advanced concurrency works. The importance of static types when it
+comes to real software projects cannot be overlooked which means for dynamically
+typed languages you should learn how to use the optional static typing features
+such as type hints in Python or TypeScript over JavaScript.
+
+The official language docs are often sufficient starting points for a complete
+beginner to get up and running:
+
+- [The Python Tutorial](https://docs.python.org/3/tutorial/index.html)
+- [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
+- [A Tour of Go](https://go.dev/tour/)
+
+## Algorithms
+
+![algorithms](blog/how-to-learn-dev/algorithms.png)
+
+The first reusable building blocks for solving problems with code are algorithms
+and data structures. Although uncommon to need to implement these from scratch
+in the real world, it's important to have a solid understanding of them to have
+a strong foundation and intuition for how to approach new problems in a
+methodical manner.
+
+All languages provide standard implementations of them for example a
+[dynamic array](https://en.wikipedia.org/wiki/Dynamic_array) which shows up
+explicitly in Java as `ArrayList<>` or under the hood in Python as its `list`
+type. Knowing how the standard tools in the toolkit work will help to recognise
+which to apply and why to any new situation that comes up.
+
+A non-comprehensive list of common data structures and algorithms I recommend
+being comfortable with:
+
+- Arrays
+- Linked lists
+- Stacks and queues
+- Binary search trees
+- Heaps and priority queues
+- Hash tables
+- Binary search
+- Depth first search (DFS) and breadth first search (BFS)
+- Dijkstra's algorithm
+- Quicksort, merge sort, insertion sort
+- Topological sort
+- Union find
+
+The best way to study is a combination of resources of which there are plenty
+available online. Just like learning a non-programming language requires
+speaking, listening, reading and writing practice, the most effective way to
+learn algorithms is a mix of theory and practical coding to reinforce
+understanding.
+
+Below are some of the resources I have personally found useful:
+
+**_Introduction to Algorithms_**
+(https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/)
+
+Also known as CLRS after its authors (Cormen, Leiserson, Rivest, Stein), this
+book is well known and deserves its reputation. It's comprehensive and will be
+easy to follow for those accustomed to formal proof of theorems for example from
+mathematics. Depending on your interest more or less can be read but it is
+useful to get the proper theoretical background on how algorithms work, why they
+work and how fast they work (big O notation).
+
+**_HackerRank_** (https://www.hackerrank.com/)
+
+Interactive coding platform containing a wide range of easy introductory
+problems (as well as harder competitive programming style problems) useful for
+familiarizing with language syntax and implementing common algorithms.
+
+**_Leetcode_** (https://leetcode.com/)
+
+Another interactive coding platform with a wide range of short algorithmic
+problems often associated with spreading the algorithm job interview culture. It
+is not worth spending over an hour stuck on a single problem in most cases -
+there are always more to solve with the same pattern. If after reading the
+solutions the problem is still too difficult you may benefit from going back to
+studying theory. Most importantly stay positive as ultimately this does not
+directly reflect software development and boils down to pattern matching.
+
+## Developer tools
+
+![developer-tools](blog/how-to-learn-dev/developer-tools.png)
+
+As you work on larger projects you'll need good developer tools to maintain
+velocity, collaborate with others and deploy to production. A working level of
+proficiency is expected in many of these core tools across the industry.
+Although the technology world moves quickly, the categories of these tools
+changes less often so learning how to use at least one of each type will help
+transfer to others in the future.
+
+Each of these deserve their own dedicated guide and require significant time
+investment to truly be called an expert but working level proficiency can be
+achieved in relatively shorter time. Start off gradually with a basic awareness
+of what these tools are and learn them as you need them. A brief overview of
+what tools to look into is given below.
+
+**_Operating system and shell_**
+
+Production servers overwhelming run Linux due to its stability, security and
+being free and open source software (FOSS). Many other projects and developer
+tools work best or only work on Unix-like operating systems. Therefore, my
+recommendation is to use Linux or macOS for your developer machine, or Linux on
+Windows through
+[Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about)
+while developing. [Ubuntu](https://ubuntu.com/) is a popular Linux distribution
+to start with. Exceptions exist for platform specific development such as
+Windows for the C# ecosystem with .NET and Visual Studio and macOS for the Apple
+ecosystem with Swift.
+
+To interact with your operating system you will spend a lot of time using the
+terminal with a shell such as [Bash](https://www.gnu.org/software/bash/) which
+is the default in many Linux distributions including Ubuntu. On your local
+development machine you will also have access to a user interface for example
+for the file system, Git and Docker. However you will commonly need to work on
+remote servers via SSH to debug production applications or as a cloud
+development workspace. Comfort with using Linux and the terminal to perform your
+everyday tasks will make it easier to transition to working with remote servers.
+
+Here is a list of command line programs I frequently use:
+
+- File system navigation - `ls`, `cd`, `pwd`, `tree`, `mkdir`, `rm`, `touch`
+- File system search - `grep`, `find`, `which`, `env`
+- File and string manipulation - `vim`, `cat`, `echo`, `head`, `tail`, `cut`,
+  `sed`, `jq`
+- File compression - `zip`, `unzip`, `tar`
+- Network requests - `curl`, `wget`, `openssl`
+- Resource management - `top`, `ps`, `kill`, `free`
+- Other - `tmux`, `ssh`, `git`, `docker`
+
+It is convention to store shell and program user settings in dotfiles in the
+user home directory for example `~/.bashrc` and `~/.gitconfig`. Eventually you
+may version these in your own [dotfiles repository](https://dotfiles.github.io/)
+to make it easier to bootstrap any new development machine or remote cloud
+workspace with your preferences.
+
+**_Integrated developer environment (IDE)_**
+
+To write, run, test and debug code an integrated developer environment (IDE) is
+used. While this can technically be done solely in the terminal with a program
+like `vim` with considerable customisation there's often a more popular choice
+for the specific language or target device.
+
+For a lightweight easy to use code editor
+[VSCode](https://code.visualstudio.com/) is a good option with strong built in
+support for TypeScript and its rich ecosystem of extensions allows it to be
+transformed into an IDE for any language.
+
+For a more heavyweight feature rich out of the box IDE consider Visual Studio,
+IntelliJ IDEA, PyCharm, GoLand depending on your language.
+
+**_Version control system (VCS)_**
+
+Source code must be managed well to handle the complexity of developers
+collaborating on features and bug fixes asynchronously in their own independent
+environments. The most popular version control system (VCS) for this is
+[Git](https://git-scm.com/) and the most popular remote repository hosting
+service is [GitHub](https://github.com/).
+
+Given the universal adoption of Git, IDEs provide deep integration with it which
+can be helpful but you should be familiar with operating with `git` from the
+terminal as well.
+
+Common workflows with Git include:
+
+- Creating and cloning a Git repository - `git init`, `git clone`
+- Committing and pushing a Git repository - `git add`, `git status`,
+  `git commit`, `git push`
+- Setting up Git branches and fetching new upstream changes - `git branch`,
+  `git checkout`, `git fetch`, `git pull`, `git remote`
+- Merging and rebasing Git branches including resolving merge conflicts -
+  `git merge`, `git rebase`
+- Managing multiple development branches - `git worktree`
+
+**_Continuous integration and deployment (CI/CD)_**
+
+For a software project to keep high velocity it's critical that the main branch
+always builds successfully and is deployed often for rapid iteration. This
+involves tasks such as installing dependencies, compiling, linting, testing,
+building and publishing artifacts against pushed commits and tags. Rather than
+have a developer manually perform these steps this is automated in a continuous
+integration and deployment (CI/CD) pipeline.
+
+There exist multiple providers but
+[GitHub Actions](https://docs.github.com/en/actions) is an obvious choice to
+start with if your Git repositories are already hosted on GitHub.
+
+**_Build system_**
+
+During both CI/CD and local development the dependency graph between project
+tasks becomes difficult to manage manually. For example, if a line of source
+code is changed in a subproject you need to know in order to rerun tests the
+relevant source code and its dependencies must be recompiled otherwise the test
+results will be stale. We could just recompile all code in the project but that
+becomes slow and inefficient for large monorepo style projects. Furthermore, if
+the inputs haven't changed the results can be cached and reused across
+independent CI runs saving lots of time.
+
+The need for efficient and correct builds leads to using a build system.
+Examples include Bazel, Gradle, Ant, Make and Turbo. Each language ecosystem may
+have build systems specifically designed for them. [Bazel](https://bazel.build/)
+is a solid language and platform agnostic build system to choose.
+
+**_Cloud_**
+
+Production applications need to run on servers somewhere. Historically that
+meant renting dedicated machines in data centres but today the default option is
+using virtual machines (VMs) in the cloud. This enables low cost commodity
+hardware resources to be shared securely between multiple customers and scaled
+elastically depending on demand.
+
+Possibilities include managing the VMs on the cloud and deploying to the VMs
+yourself as Infrastructure as a Service (IaaS) or providing application code in
+the form of containers or otherwise to be managed and run on the cloud directly
+as Platform as a Service (PaaS).
+
+The main players are [Amazon Web Services](https://aws.amazon.com/) (AWS),
+[Google Cloud Platform](https://cloud.google.com/) (GCP) and
+[Microsoft Azure](https://azure.microsoft.com/). Each platform offers some quota
+of services under a free tier to get started and it's best to start off with
+just one of them to benefit from the whole integrated platform.
+
+**_Containers_**
+
+Running software in different environments is hard. Even between developers on a
+single team with the same model hardware it's frequent to hear the saying "it
+works on my machine!". Containers exist to solve this problem by packaging an
+application together with its dependencies to run in a reproducible environment.
+The overhead is less compared to VMs due to the host operating system kernel
+being shared across containers.
+
+There exist standard specifications for containers by the Open Container
+Initiative (OCI). [Docker](https://www.docker.com/) heavily contributed to the
+OCI and is the default platform for developers to build OCI compliant images and
+run containers. To run containers in production an orchestration system such as
+[Kubernetes](https://kubernetes.io/) (k8s) is used which under the hood can use
+different container runtimes including `containerd` which was originally split
+out from Docker during attempts to make it more modular.
+
+Common workflows with the Docker CLI include:
+
+- Building an image from a Dockerfile - `docker build`
+- Running a container from an image in a registry - `docker run`
+- Attaching to a running container and inspecting logs - `docker ps`,
+  `docker exec`, `docker logs`
+- Stopping and removing containers - `docker stop`, `docker rm`
+- Managing locally pulled images - `docker pull`, `docker images`
+
+**_Design_**
+
+Design tools can be used to mock user interfaces and information architecture of
+applications and a company may have Product Designers for this purpose. They are
+still valuable for developers to create architecture diagrams as an important
+step in the software development lifecycle to plan implementation and gather
+feedback from teams.
+
+[Figma](https://figma.com/) is the best full featured collaborative design
+platform today. The images in this blog were all created in Figma! Other
+lightweight options to experiment with are Excalidraw and draw.io.
+
+## Projects
+
+![projects](blog/how-to-learn-dev/projects.png)
+
+Software development is creative! The joy is in the huge variety of projects
+that can be worked on.
+
+Find your passion. If you enjoy algorithms you might continue studying theory
+and join competitive programming contests. If you enjoy user facing applications
+you might try to build and deploy an app to help others. If you enjoy AI/ML you
+might try to train your own model for a bespoke task.
+
+This is highly personal and dependent on your own interest but some ideas if
+you're struggling:
+
+- Script to automate task you find yourself repeating
+- Command line interface (CLI) to interact with an external service from the
+  terminal
+- Web/mobile/desktop application
+- Personal website/blog
+- Large language models (LLMs) applied to a new area of interest
+- Simple database implementation from scratch
+- Small bug fixes in open source projects
+
+Don't worry about how large or small a project is, the biggest challenge is
+getting started.
+
+As well as exploring your own projects, I recommend spending lots and lots of
+time reading other codebases. This will help as inspiration for your own
+projects, teach you new programming tricks and open your mind to various styles
+of writing code. You will eventually form your own opinions and code style after
+years of reading and writing code. Try to start from a user facing string in a
+piece of software you use and reverse engineer how the system works from
+searching the source code. Doing this improves your debugging skills and
+decreases the time it will take you to onboard onto a new codebase in the
+future.
+
+Use this as an opportunity to put into practice the developer tools you've
+learned at a small enough scale that you can see the whole picture. At larger
+companies there may be abstractions on top of tools or internally developed
+substitutes for them to streamline processes and enforce consistency which
+increase developer productivity but also make it easy to skip understanding the
+fundamentals behind them. For example, set up your own CI/CD pipeline for your
+code repository from scratch which will save you time in the long run and teach
+yourself valuable skills.
+
+Below are some extra thoughts and resources:
+
+**_Contributing to open source_**
+
+Giving back to the developer community can be one of the most rewarding ways to
+spend time and a lot of the code we rely on depends on the hard work of the
+people working on open source projects. A word of warning though that,
+especially as a beginner, it is not realistic to contribute to the largest open
+source projects without a considerable time investment on all sides. In fact,
+some maintainers may take the stance that no external contributions are accepted
+to avoid the potential discouraging experience for everyone.
+
+If going down this route, it's best to focus on small less controversial changes
+such as documentation and small bug fixes while demonstrating good communication
+and commitment which may grow into a longer term relationship of trust. Look for
+smaller open source projects which may have more bandwidth and a shortage of
+contributors. A personal motivation behind a contribution may also improve your
+chances of keeping morale up for example if it would allow you to remove a
+workaround in your own application code.
+
+**_Clean Code_**
+(https://www.oreilly.com/library/view/clean-code-a/9780136083238/)
+
+A well liked book for teaching guidelines to follow when writing code including
+don't repeat yourself (DRY) and keep it simple stupid (KISS). Worth reading
+early on to form intuition on what good or bad code may look like and why. As
+with most advice, it's important to be open minded and not treat it as rules set
+in stone that can never be broken - exceptions always exist.
+
+**_Design Patterns_**
+(https://www.oreilly.com/library/view/design-patterns-elements/0201633612/)
+
+Also known as the "Gang of Four" design patterns book which prescribes and gives
+names to object oriented programming solutions for repeatedly seen software
+problems. This book requires some experience in writing object oriented
+programming, however it is likely that while reading any established codebase
+you will spot at least one of the design patterns inside. Similar to how
+algorithms share knowledge of building blocks of code, design patterns share
+knowledge of building blocks of objects.
+
+## Conclusion
+
+The best advice I can give is to stay curious and keep writing code. We all look
+back at early code we have written and laugh or feel embarrassed but writing
+code that serves a purpose to people and enjoying the journey along the way is
+what matters. At a certain point the pieces will start to click together and
+you'll look behind at the mountain you've climbed and look forward to the next
+one ahead.
+
+I hope that this has been useful as it would have been for me at the start of my
+career! If you have any questions you are welcome to reach out.
