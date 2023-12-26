@@ -9,3 +9,4 @@ Built with:
 - React
 - Tailwind CSS
 - Markdown
+- GoatCounter
