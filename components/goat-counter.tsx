@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-const GOAT_COUNTER_API_URL = "https://stats.tzyl.dev/count";
+const GOAT_COUNTER_API_URL = process.env.NEXT_PUBLIC_GOAT_COUNTER_API_URL;
 const GOAT_COUNTER_SCRIPT_URL = "/count.js";
 
 const GoatCounter = () => {
