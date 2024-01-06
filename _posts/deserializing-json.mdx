@@ -1,0 +1,441 @@
+---
+title: "Deserializing JSON"
+excerpt: "Loading data stored in JSON with TypeScript, Python, Java and Go"
+date: "2024-01-06T12:00:00.000Z"
+coverImage: "blog/deserializing-json/deserializing-json.png"
+ogImage: "blog/deserializing-json/deserializing-json.png"
+---
+
+## Intro
+
+A common workflow when writing software is to take data received from an
+external source such as a network request to an API or a file and deserialize it
+into an in memory object. The reverse process is also true of serializing an in
+memory object to transfer over the network or to persist into a file. The most
+widespread data format for this is [JSON](https://www.json.org/) due to its
+simplicity and ability to inspect its human readable contents.
+
+We'll show how to interact with JSON data with TypeScript, Python, Java and Go
+and make some observations along the way. More specifically we'll focus on
+deserialization using the standard library where possible to keep code snippets
+pure and simple although in production you may prefer other libraries for
+example to construct HTTP requests.
+
+Throughout this post we'll use the fake API from
+[JSONPlaceholder](https://jsonplaceholder.typicode.com/) as an example. The
+schema of the JSON todo data loaded from
+`https://jsonplaceholder.typicode.com/todos/1` looks as follows:
+
+```json
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+```
+
+## Untyped deserialization
+
+To start with let's take a look at loading JSON data in an untyped way. This
+might be useful in quick one off scripts or dynamic situations where the exact
+schema of the data may not be known up front.
+
+### TypeScript
+
+Given that all JSON is valid as a JavaScript expression (hence the name
+JavaScript Object Notation) it's unsurprising that working with JSON is
+straightforward. When using the Fetch API,
+[`Response.json()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
+resolves JSON in a response body to a JavaScript object. Alternatively,
+[`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+may be used when working with string content from a loaded file.
+
+Note that in JavaScript the `number` type is a double precision floating point
+number whereas the JSON spec does not require a specific precision. In practice,
+for interoperability it may be expected that double precision floating point
+numbers are used in JSON or strings are used instead to avoid ambiguity over
+loss of precision of large numbers.
+
+```typescript
+const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+const data = await response.json(); // any
+const id = data.id; // any
+const userId = data.userId; // any
+const title = data.title; // any
+const completed = data.completed; // any
+const doesNotExist = data.doesNotExist; // any, undefined at runtime!
+```
+
+### Python
+
+The Python dictionary is the analog to the JavaScript object for working with
+key value data. Handling untyped data is natural as a dynamically typed language
+although the addition of static type checking is possible on top through
+[mypy](https://mypy.readthedocs.io/en/stable/) and type hints similar to the
+addition of TypeScript on top of JavaScript. We can use
+[`json.loads()`](https://docs.python.org/3/library/json.html#json.loads) to
+parse a string containing JSON data into a dictionary.
+
+Note that JSON numbers will automatically be deserialized to either `int` or
+`float` Python types depending on whether it can be represented as an integer.
+
+```python
+import json
+import urllib.request
+
+response = urllib.request.urlopen("https://jsonplaceholder.typicode.com/todos/1")
+data = json.loads(response.read().decode("utf-8"))  # Any
+id = data["id"]  # Any
+user_id = data["userId"]  # Any
+title = data["title"]  # Any
+completed = data["completed"]  # Any
+does_not_exist = data["doesNotExist"]  # Any, KeyError at runtime!
+```
+
+### Java
+
+This example uses the standard HTTP client API introduced in Java 11 together
+with [Jackson](https://github.com/FasterXML/jackson) one of the de facto
+libraries for handling JSON in Java. We receive a `JsonNode` from the
+`ObjectMapper.readTree()` method allowing us to access arbitrary JSON properties
+in the tree structure.
+
+Note that when calling methods such as `JsonNode.asInt()` to coerce the
+underlying value to an `int` other JSON values other than numbers such as
+booleans and strings may be accepted. If the value cannot be coerced to an `int`
+the default value of the type will be returned which would be 0 for ints.
+
+```java
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+
+public class JavaExample {
+    public static void main(String[] _args) throws URISyntaxException, IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI("https://jsonplaceholder.typicode.com/todos/1"))
+                .GET()
+                .build();
+        HttpResponse<InputStream> response = client.send(request, BodyHandlers.ofInputStream());
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode data = mapper.readTree(response.body());
+        int id = data.get("id").asInt();
+        int userId = data.get("userId").asInt();
+        String title = data.get("title").asText();
+        boolean completed = data.get("completed").asBoolean();
+        JsonNode doesNotExist = data.get("doesNotExist"); // null at runtime!
+    }
+}
+```
+
+### Go
+
+The empty interface `interface{}` in Go allows working with data of an unknown
+type. If we use [json.Unmarshal()](https://pkg.go.dev/encoding/json#Unmarshal)
+on a pointer to a `map[string]interface{}` value we'll receive the deserialized
+JSON object according to the specified types:
+
+```
+bool, for JSON booleans
+float64, for JSON numbers
+string, for JSON strings
+[]interface{}, for JSON arrays
+map[string]interface{}, for JSON objects
+nil for JSON null
+```
+
+Note that numbers are always deserialized to `float64` when an interface value
+is used so an explicit type conversion to `int` is needed if desired.
+
+```go
+import (
+	"encoding/json"
+	"io"
+	"net/http"
+)
+
+response, err := http.Get("https://jsonplaceholder.typicode.com/todos/1")
+if err != nil {
+	panic(err)
+}
+defer response.Body.Close()
+
+body, err := io.ReadAll(response.Body)
+if err != nil {
+	panic(err)
+}
+
+var data map[string]interface{}
+err = json.Unmarshal(body, &data)
+if err != nil {
+	panic(err)
+}
+
+id := data["id"].(float64)            // float64
+userId := data["userId"].(float64)    // float64
+title := data["title"].(string)       // string
+completed := data["completed"].(bool) // bool
+doesNotExist := data["doesNotExist"]  // interface{}, nil at runtime!
+```
+
+## Typed deserialization
+
+Now let's consider how to deserialize JSON into typed objects allowing our code
+to operate in a safer way and automatically catch mistakes such as a typo
+accessing wrong field names.
+
+### TypeScript
+
+An explicit type annotation gives a hint to the TypeScript compiler on the type
+we want it to treat the object as. Now the compiler knows what fields exist and
+what types they should be it can catch errors on incorrect access (according to
+the types it was told).
+
+Note that this is compile time only and does not change the runtime JavaScript
+code once compiled with any extra validation or type conversions - the exact
+same JavaScript object is still used which may error at runtime if typed
+incorrectly or subsequently mutated.
+
+```typescript
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+const data: Todo = await response.json();
+const id = data.id; // number
+const userId = data.userId; // number
+const title = data.title; // string
+const completed = data.completed; // boolean
+const doesNotExist = data.doesNotExist; // compile error!
+```
+
+### Python
+
+The [`TypedDict`](https://mypy.readthedocs.io/en/stable/typed_dict.html) type
+allows us to perform a very similar type annotation. When using
+[mypy](https://mypy.readthedocs.io/en/stable/) to check static types we achieve
+a similar level of protection at lint time.
+
+Note that this is lint time only and again does not affect the executed code at
+runtime.
+
+```python
+import json
+import urllib.request
+from typing import TypedDict
+
+
+class Todo(TypedDict):
+    id: int
+    userId: int
+    title: str
+    completed: bool
+
+
+response = urllib.request.urlopen("https://jsonplaceholder.typicode.com/todos/1")
+data: Todo = json.loads(response.read().decode("utf-8"))  # Todo
+id = data["id"]  # int
+user_id = data["userId"]  # int
+title = data["title"]  # str
+completed = data["completed"]  # bool
+does_not_exist = data["doesNotExist"]  # typeddict-item error at lint time!
+```
+
+### Java
+
+The first step is to define a class to deserialize data into. Here we define a
+simple `Todo` plain old Java object (POJO) with standard getters and setters.
+Jackson automatically works with these types of classes out of the box by
+matching the field names based on the method names. Jackson annotations can
+customise the deserialization behaviour such as `@JsonProperty` to remap field
+names.
+
+Note that this does change the runtime code. It creates new `Todo` objects
+rather than `JsonNode` objects and by default, Jackson object mappers fail on
+encountering unknown properties during deserialization.
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+
+public class JavaExample {
+    public static void main(String[] _args) throws URISyntaxException, IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI("https://jsonplaceholder.typicode.com/todos/1"))
+                .GET()
+                .build();
+        HttpResponse<InputStream> response = client.send(request, BodyHandlers.ofInputStream());
+        ObjectMapper mapper = new ObjectMapper();
+        Todo todo = mapper.readValue(response.body(), Todo.class);
+        int id = todo.getId();
+        int userId = todo.getUserId();
+        String title = todo.getTitle();
+        boolean completed = todo.getCompleted();
+        JsonNode doesNotExist = todo.getDoesNotExist(); // compile error!
+    }
+
+    private static final class Todo {
+        private int id;
+        private int userId;
+        private String title;
+        private boolean completed;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public boolean getCompleted() {
+            return completed;
+        }
+
+        public void setCompleted(boolean completed) {
+            this.completed = completed;
+        }
+    }
+}
+```
+
+### Go
+
+Instead of deserializing into the empty interface we can define and deserialize
+into a `struct`. The field names are matched to `struct` field names accepting
+case-insensitive matches. Alternative field names may be used by adding extra
+metadata in [struct tags](https://pkg.go.dev/encoding/json#Marshal) such as
+`` Field int `json:"myName"` ``
+
+Note that similar to Java this does have an effect at runtime for example
+choosing to deserialize numbers as ints rather than `float64`.
+
+```go
+import (
+	"encoding/json"
+	"io"
+	"net/http"
+)
+
+type Todo struct {
+	Id        int    `json:"id"`
+	UserId    int    `json:"userId"`
+	Title     string `json:"title"`
+	Completed bool   `json:"completed"`
+}
+
+response, err := http.Get("https://jsonplaceholder.typicode.com/todos/1")
+if err != nil {
+    panic(err)
+}
+defer response.Body.Close()
+
+body, err := io.ReadAll(response.Body)
+if err != nil {
+    panic(err)
+}
+
+var data Todo
+err = json.Unmarshal(body, &data)
+if err != nil {
+    panic(err)
+}
+
+id := data.Id                     // int
+userId := data.UserId             // int
+title := data.Title               // string
+completed := data.Completed       // bool
+doesNotExist := data.DoesNotExist // compile error!
+```
+
+## Data constraints
+
+Going further than simply parsing we may want to enforce data constraints
+relevant to the objects in our data model.
+
+Some of these may be inherent to the deserialization itself such as:
+
+- Treat missing or null values for array fields as an empty array
+- Remove null elements inside arrays
+- Fail on extra fields sent that we do not recognise
+
+This category of data constraint can often be tuned for example with Jackson's
+[DeserializationFeature](https://github.com/FasterXML/jackson-databind/wiki/Deserialization-Features).
+
+Others may be relevant to business logic or necessary for the object as a whole
+to make sense for example invariants between fields:
+
+- Max length of string for a title
+- Non-negative integer value for a page size
+- Value matches expected format like a book ISBN number
+
+For TypeScript and Python, these will obviously require extra code changes at
+runtime and will make the deserialization perform closer to the given Java and
+Go examples. Ideas to explore in this direction are:
+
+- Typescript
+  - [`zod`](https://zod.dev/)
+- Python
+  - [`dataclasses`](https://docs.python.org/3/library/dataclasses.html)
+  - [`pydantic`](https://docs.pydantic.dev/latest/)
+  - [`attrs`](https://www.attrs.org/) and [`cattrs`](https://catt.rs/)
+- Java
+  - [JSR 380](https://beanvalidation.org/2.0-jsr380/) and the
+    `jakarta.validation.constraints` annotations
+  - [Immutables](https://immutables.github.io/) with precondition check methods
+- Go
+  - [go-playground/validator](https://github.com/go-playground/validator)
+
+[JSON Schema](https://json-schema.org/) also exists as a standard for defining a
+schema for JSON data with validator implementations for all of the popular
+programming languages.
+
+### Conclusion
+
+One of the main purposes of JSON is for interoperability between different
+software boundaries. It's interesting to take a fundamental task such as
+deserializing JSON and compare side by side how different languages and their
+libraries approach it.
+
+Notably, Java stands out as requiring an external library to perform basic
+parsing and potentially even further libraries for cutting down boilerplate code
+through codegen of standard getter/setters. I'm personally a fan of the mix of
+conciseness and out of the box safety provided by Go in this case without the
+need for a lot of work to setup additional tools.

@@ -1,6 +1,8 @@
 import type { StaticImageData } from "next/image";
 import blogAoc2021ReflectionsTzylAoc2021Png_1x from "../public/assets/blog/aoc-2021-reflections/tzyl-aoc2021@1x.png";
 import blogAoc2021ReflectionsTzylAoc2021Png_2x from "../public/assets/blog/aoc-2021-reflections/tzyl-aoc2021@2x.png";
+import blogDeserializingJsonDeserializingJsonPng_1x from "../public/assets/blog/deserializing-json/deserializing-json@1x.png";
+import blogDeserializingJsonDeserializingJsonPng_2x from "../public/assets/blog/deserializing-json/deserializing-json@2x.png";
 import blogHowToLearnDevAlgorithmsPng_1x from "../public/assets/blog/how-to-learn-dev/algorithms@1x.png";
 import blogHowToLearnDevAlgorithmsPng_2x from "../public/assets/blog/how-to-learn-dev/algorithms@2x.png";
 import blogHowToLearnDevDeveloperToolsPng_1x from "../public/assets/blog/how-to-learn-dev/developer-tools@1x.png";
@@ -51,6 +53,8 @@ import profileProfileJpg_2x from "../public/assets/profile/profile@2x.jpg";
 export const KnownImagePath = {
   BLOG_AOC_2021_REFLECTIONS_TZYL_AOC2021_PNG:
     "blog/aoc-2021-reflections/tzyl-aoc2021.png",
+  BLOG_DESERIALIZING_JSON_DESERIALIZING_JSON_PNG:
+    "blog/deserializing-json/deserializing-json.png",
   BLOG_HOW_TO_LEARN_DEV_ALGORITHMS_PNG: "blog/how-to-learn-dev/algorithms.png",
   BLOG_HOW_TO_LEARN_DEV_DEVELOPER_TOOLS_PNG:
     "blog/how-to-learn-dev/developer-tools.png",
@@ -105,6 +109,10 @@ export const KNOWN_IMAGE_METADATA: Record<
   [KnownImagePath.BLOG_AOC_2021_REFLECTIONS_TZYL_AOC2021_PNG]: {
     oneX: blogAoc2021ReflectionsTzylAoc2021Png_1x,
     twoX: blogAoc2021ReflectionsTzylAoc2021Png_2x,
+  },
+  [KnownImagePath.BLOG_DESERIALIZING_JSON_DESERIALIZING_JSON_PNG]: {
+    oneX: blogDeserializingJsonDeserializingJsonPng_1x,
+    twoX: blogDeserializingJsonDeserializingJsonPng_2x,
   },
   [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_ALGORITHMS_PNG]: {
     oneX: blogHowToLearnDevAlgorithmsPng_1x,
