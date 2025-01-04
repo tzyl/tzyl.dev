@@ -13,6 +13,20 @@ import blogHowToLearnDevLanguageBasicsPng_1x from "../public/assets/blog/how-to-
 import blogHowToLearnDevLanguageBasicsPng_2x from "../public/assets/blog/how-to-learn-dev/language-basics@2x.png";
 import blogHowToLearnDevProjectsPng_1x from "../public/assets/blog/how-to-learn-dev/projects@1x.png";
 import blogHowToLearnDevProjectsPng_2x from "../public/assets/blog/how-to-learn-dev/projects@2x.png";
+import blogMaxOrSqrt2dMaxPng_1x from "../public/assets/blog/max-or-sqrt/2d-max@1x.png";
+import blogMaxOrSqrt2dMaxPng_2x from "../public/assets/blog/max-or-sqrt/2d-max@2x.png";
+import blogMaxOrSqrt2dPointPng_1x from "../public/assets/blog/max-or-sqrt/2d-point@1x.png";
+import blogMaxOrSqrt2dPointPng_2x from "../public/assets/blog/max-or-sqrt/2d-point@2x.png";
+import blogMaxOrSqrt2dSqrtPng_1x from "../public/assets/blog/max-or-sqrt/2d-sqrt@1x.png";
+import blogMaxOrSqrt2dSqrtPng_2x from "../public/assets/blog/max-or-sqrt/2d-sqrt@2x.png";
+import blogMaxOrSqrtMaxExamplePng_1x from "../public/assets/blog/max-or-sqrt/max-example@1x.png";
+import blogMaxOrSqrtMaxExamplePng_2x from "../public/assets/blog/max-or-sqrt/max-example@2x.png";
+import blogMaxOrSqrtMaxOrSqrtPng_1x from "../public/assets/blog/max-or-sqrt/max-or-sqrt@1x.png";
+import blogMaxOrSqrtMaxOrSqrtPng_2x from "../public/assets/blog/max-or-sqrt/max-or-sqrt@2x.png";
+import blogMaxOrSqrtSqrtExamplePng_1x from "../public/assets/blog/max-or-sqrt/sqrt-example@1x.png";
+import blogMaxOrSqrtSqrtExamplePng_2x from "../public/assets/blog/max-or-sqrt/sqrt-example@2x.png";
+import blogMaxOrSqrtSquareSqrtGraphPng_1x from "../public/assets/blog/max-or-sqrt/square-sqrt-graph@1x.png";
+import blogMaxOrSqrtSquareSqrtGraphPng_2x from "../public/assets/blog/max-or-sqrt/square-sqrt-graph@2x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_1x from "../public/assets/blog/network-theory-small-world/barabasi-albert-final@1x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_2x from "../public/assets/blog/network-theory-small-world/barabasi-albert-final@2x.png";
 import blogNetworkTheorySmallWorldBarabasiAlbertInitialPng_1x from "../public/assets/blog/network-theory-small-world/barabasi-albert-initial@1x.png";
@@ -63,6 +77,14 @@ export const KnownImagePath = {
   BLOG_HOW_TO_LEARN_DEV_LANGUAGE_BASICS_PNG:
     "blog/how-to-learn-dev/language-basics.png",
   BLOG_HOW_TO_LEARN_DEV_PROJECTS_PNG: "blog/how-to-learn-dev/projects.png",
+  BLOG_MAX_OR_SQRT_2D_MAX_PNG: "blog/max-or-sqrt/2d-max.png",
+  BLOG_MAX_OR_SQRT_2D_POINT_PNG: "blog/max-or-sqrt/2d-point.png",
+  BLOG_MAX_OR_SQRT_2D_SQRT_PNG: "blog/max-or-sqrt/2d-sqrt.png",
+  BLOG_MAX_OR_SQRT_MAX_EXAMPLE_PNG: "blog/max-or-sqrt/max-example.png",
+  BLOG_MAX_OR_SQRT_MAX_OR_SQRT_PNG: "blog/max-or-sqrt/max-or-sqrt.png",
+  BLOG_MAX_OR_SQRT_SQRT_EXAMPLE_PNG: "blog/max-or-sqrt/sqrt-example.png",
+  BLOG_MAX_OR_SQRT_SQUARE_SQRT_GRAPH_PNG:
+    "blog/max-or-sqrt/square-sqrt-graph.png",
   BLOG_NETWORK_THEORY_SMALL_WORLD_BARABASI_ALBERT_FINAL_PNG:
     "blog/network-theory-small-world/barabasi-albert-final.png",
   BLOG_NETWORK_THEORY_SMALL_WORLD_BARABASI_ALBERT_INITIAL_PNG:
@@ -133,6 +155,34 @@ export const KNOWN_IMAGE_METADATA: Record<
   [KnownImagePath.BLOG_HOW_TO_LEARN_DEV_PROJECTS_PNG]: {
     oneX: blogHowToLearnDevProjectsPng_1x,
     twoX: blogHowToLearnDevProjectsPng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_2D_MAX_PNG]: {
+    oneX: blogMaxOrSqrt2dMaxPng_1x,
+    twoX: blogMaxOrSqrt2dMaxPng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_2D_POINT_PNG]: {
+    oneX: blogMaxOrSqrt2dPointPng_1x,
+    twoX: blogMaxOrSqrt2dPointPng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_2D_SQRT_PNG]: {
+    oneX: blogMaxOrSqrt2dSqrtPng_1x,
+    twoX: blogMaxOrSqrt2dSqrtPng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_MAX_EXAMPLE_PNG]: {
+    oneX: blogMaxOrSqrtMaxExamplePng_1x,
+    twoX: blogMaxOrSqrtMaxExamplePng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_MAX_OR_SQRT_PNG]: {
+    oneX: blogMaxOrSqrtMaxOrSqrtPng_1x,
+    twoX: blogMaxOrSqrtMaxOrSqrtPng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_SQRT_EXAMPLE_PNG]: {
+    oneX: blogMaxOrSqrtSqrtExamplePng_1x,
+    twoX: blogMaxOrSqrtSqrtExamplePng_2x,
+  },
+  [KnownImagePath.BLOG_MAX_OR_SQRT_SQUARE_SQRT_GRAPH_PNG]: {
+    oneX: blogMaxOrSqrtSquareSqrtGraphPng_1x,
+    twoX: blogMaxOrSqrtSquareSqrtGraphPng_2x,
   },
   [KnownImagePath.BLOG_NETWORK_THEORY_SMALL_WORLD_BARABASI_ALBERT_FINAL_PNG]: {
     oneX: blogNetworkTheorySmallWorldBarabasiAlbertFinalPng_1x,
